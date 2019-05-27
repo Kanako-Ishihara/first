@@ -37,7 +37,7 @@
 
     </table>
 
-    <button type="button" onclick="location.href=''">戻る</button>
+    <button type="button" onclick="location.href='./list.php'">戻る</button>
     <button type="submit">追加</button>
 
   </form>

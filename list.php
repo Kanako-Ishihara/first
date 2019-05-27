@@ -21,8 +21,7 @@
  ?>
 
 <body>
-  <button type="button" onclick="location.href=''">追加</button>
-  <!-- 未実装 -->
+  <button type="button" onclick="location.href='./insert_form.php'">追加</button>
   <br>
 
   <div>社員一覧表</div>
