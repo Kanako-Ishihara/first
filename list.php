@@ -5,30 +5,22 @@
   <title>list</title>
 </head>
 
+
 <?php
-try {
-  $dbh = new PDO("mysql:host=192.168.199.3; dbname=company; charset=utf8", 'root', 'cent_Kagi10');
-  $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_SILENT);
-  $sql = '
-  SELECT code as 社員番号,name as 社員名, name_kana as "社員名 かな",gender FROM user
-  ';
+    require_once('./helpers/db_helper.php');
 
-  $data = $dbh->query($sql);
-  echo "no error　<br />";
-  var_dump($dbh->errorCode());
-  echo "<br />";
-  var_dump($dbh->errorInfo());
-} catch (\Exception $e) {
-  echo $e->getMessage();
-	die();
-}
-
-
-echo $data;
+    $dbh = get_db_connect();
+    $sql = 'SELECT code as 社員番号,name as 社員名, name_kana as "社員名 かな",gender FROM user';
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $data[] = $row;
+    }
+    var_dump($data);
  ?>
 
 <body>
-  <button type="button" onclick="location.href=''">追加</button>
+  <button type="button" onclick="location.href=''">追加</button> //未実装
 
   <br>
 
@@ -44,7 +36,6 @@ echo $data;
       <td>編集</td>
       <td>削除</td>
     </tr>
-
 
     <tr>
       <td>1</td>
