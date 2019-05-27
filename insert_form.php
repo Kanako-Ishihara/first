@@ -7,31 +7,31 @@
 
 <body>
   <div>追加</div>
-  <form method="" action="">
+  <form method="post" action="./insert.php">
 
     <table border="1">
 
       <tr>
         <td>社員番号</td>
-        <td><input type="text"></td>
+        <td><input type="text" name="id"></td>
       </tr>
 
       <tr>
         <td>社員名</td>
-        <td><input type="text"></td>
+        <td><input type="text" name="name"></td>
       </tr>
 
       <tr>
        <td>社員名(かな)</td>
-       <td><input type="text"></td>
+       <td><input type="text" name="name_kana"></td>
       </tr>
 
       <tr>
         <td>性別</td>
         <td>
-          <input type="radio">男性<br>
-          <input type="radio">女性<br>
-          <input type="radio">選択しない
+          <input type="radio" name="gender" value=1 >男性<br>
+          <input type="radio" name="gender" value=2>女性<br>
+          <input type="radio" name="gender" value=0>選択しない
         </td>
       </tr>
 
