@@ -13,7 +13,7 @@
 
       <tr>
         <td>社員番号</td>
-        <td><input type="text" name="id"></td>
+        <td><input type="text" name="code"></td>
       </tr>
 
       <tr>
