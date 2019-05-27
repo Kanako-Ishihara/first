@@ -13,13 +13,11 @@
     $sql = 'SELECT code as 社員番号,name as 社員名, name_kana as "社員名 かな",
       case gender when 1 then "男" when 2 then "女" else "不明" end as "性別",
       created_at as 登録日, updated_at as 更新日 FROM user';
-    echo $sql.'<br />';
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         $data[] = $row;
     }
-    var_dump($data[0]);
  ?>
 
 <body>
@@ -39,8 +37,7 @@
       <td>編集</td>
       <td>削除</td>
     </tr>
-<?php echo count($data);
-foreach ($data as $emp_num => $emp_data) { ?>
+<?php foreach ($data as $emp_num => $emp_data) { ?>
   <tr>
     <?php foreach ($emp_data as $key => $value){?>
       <td><?php echo $value; ?></td>
