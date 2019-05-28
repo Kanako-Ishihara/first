@@ -13,11 +13,7 @@
     $sql = 'SELECT code as 社員番号,name as 社員名, name_kana as "社員名 かな",
       case gender when 1 then "男" when 2 then "女" else "不明" end as "性別",
       created_at as 登録日, updated_at as 更新日 FROM user';
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $data[] = $row;
-    }
+    $data = SelectSQL($sql,$dbh);
  ?>
 
 <body>
@@ -41,9 +37,11 @@
     <?php foreach ($emp_data as $key => $value){?>
       <td><?php echo $value; ?></td>
     <?php } ?>
-    <td><button type="button">編集</button></td>
-    <td><button type="button">削除</button></td>
+    <!-- <td><button type="button" onclick="location.href=’./update_form.php">編集</button></td> -->
+    <td><button type="button" onclick="location.href='./update_form.php'">編集</button></td>
+    <td><button type="button" onclick="location.href='./delete.php'">削除</button></td>
   </tr>
+
 <?php } ?>
   </table>
 </body>
