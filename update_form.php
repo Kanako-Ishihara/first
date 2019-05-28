@@ -14,13 +14,13 @@ $dbh = GetDbConnect();
 $data = SelectSQL($sql,$dbh)[0];
 $gender_array = ["","",""];
 $gender_array[$data["gender"]] = "checked";
-var_dump($gender_array);
 ?>
 
 <body>
   <div>編集</div>
-  <form>
-    <input type=hidden name="id" value="">
+  <form action="./update.php" method="post">
+    <input type="hidden" name="id" value="<?php echo $id; ?>">
+
     <table border="1">
 
       <tr>
@@ -41,9 +41,9 @@ var_dump($gender_array);
       <tr>
         <td>性別</td>
         <td>
-          <input type="radio" name="gender" value="1" <?php echo $gender_array[1]; ?> required>男<br>
-          <input type="radio" name="gender" value="2" <?php echo $gender_array[2]; ?> required>女<br>
-          <input type="radio" name="gender" value="0" <?php echo $gender_array[0]; ?> required>選択しない
+          <input type="radio" name="gender" value=1 <?php echo $gender_array[1]; ?> required>男<br>
+          <input type="radio" name="gender" value=2 <?php echo $gender_array[2]; ?> required>女<br>
+          <input type="radio" name="gender" value=0 <?php echo $gender_array[0]; ?> required>選択しない
         </td>
       </tr>
 
@@ -53,5 +53,6 @@ var_dump($gender_array);
     <button type="submit">保存</button>
 
   </form>
+
 </body>
 </html>

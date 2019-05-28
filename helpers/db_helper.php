@@ -16,7 +16,9 @@ function GetDbConnect(){
 }
 
 function ChangeDbSql($sql,$dbh){
-  $stmt = $dbh->prepare($sql);
+  if(!$stmt = $dbh->prepare($sql)){
+    echo "SQL文が不適切です";
+  }
   if($stmt->execute()){
     return TRUE;
   }else{
