@@ -5,8 +5,9 @@
   <title>list</title>
 </head>
 
-
 <?php
+echo $_SERVER['REQUEST_METHOD'];
+
     require_once('./helpers/db_helper.php');
 
     $dbh = get_db_connect();
@@ -20,6 +21,7 @@
   <button type="button" onclick="location.href='./insert_form.php'">追加</button>
   <br>
 
+<form id="update" action="./update_form.php" method="post">
   <div>社員一覧表</div>
   <table border="1">
     <tr>
@@ -37,12 +39,14 @@
     <?php foreach ($emp_data as $key => $value){?>
       <td><?php echo $value; ?></td>
     <?php } ?>
-    <!-- <td><button type="button" onclick="location.href=’./update_form.php">編集</button></td> -->
-    <td><button type="button" onclick="location.href='./update_form.php'">編集</button></td>
-    <td><button type="button" onclick="location.href='./delete.php'">削除</button></td>
-  </tr>
 
-<?php } ?>
+      <td><button type="submit" value="<?php $key ?>" name="id" onclick="location.href='./update_form.php'">編集</button></td>
+      <td><button type="submit" value="<?php echo $data[$emp_num]["社員番号"];?>" formaction="./delete.php" name="id">削除</button>
+      </td>
+  </tr>
+</form>
+
+<?php }?>
   </table>
 </body>
 </html>
