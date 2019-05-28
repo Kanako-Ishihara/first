@@ -20,8 +20,6 @@ $post_txt_array = [  $code,  $name,  $name_kana];
 
 <body>
   <?php
-  // var_dump($post_array);
-  // echo '初期段階<br />';
 $have_error = false;
 $dbh = get_db_connect();
 $error_mes = "";
@@ -32,8 +30,13 @@ foreach ($post_txt_array as $key => $value) {
     $error_mes .= "エラー箇所　第".$key."項目： ".$tmp_err."<br />";
   }
 }
-// numValidation();
-
+if (!$gender){
+  $error_mes .= "性別を入力してください。<br />";
+  $have_error = True;
+} elseif (numValidation($gender,0,2)) {
+  $error_mes .= numValidation($gender,0,2);
+  $have_error = True;
+}
 if (!$have_error) {
   $sql =
   "INSERT INTO user(code,name,name_kana,gender)

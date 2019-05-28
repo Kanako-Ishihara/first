@@ -9,6 +9,7 @@ function textValidation($txt,$num){
 }
 
 function numValidation($num,$first,$last){
+	echo "numvali";
 	if ($num < $first || $num > $last) {
 		return $first."から".$last."の範囲で値を設定してください。必須です。";
 	}
