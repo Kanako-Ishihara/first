@@ -41,8 +41,7 @@ if (!$have_error) {
   $sql =
   "INSERT INTO user(code,name,name_kana,gender)
   VALUES ('{$code}','{$name}','{$name_kana}','{$gender}')";
-  $stmt = $dbh->prepare($sql);
-  if($stmt->execute()){
+  if(ChangeDbSql($sql,$dbh) === TRUE){
     echo '社員番号：'.$code.'<br />社員名：'.$name.'<br />社員名 かな：'.$name_kana.' <br />性別：'.$gender." <p>以上のデータについて、挿入が成功しました。</p>";
   }else{
     echo '挿入に失敗しました。';

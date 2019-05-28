@@ -6,12 +6,10 @@
 </head>
 
 <?php
-echo $_SERVER['REQUEST_METHOD'];
-
     require_once('./helpers/db_helper.php');
 
     $dbh = get_db_connect();
-    $sql = 'SELECT code as 社員番号,name as 社員名, name_kana as "社員名 かな",
+    $sql = 'SELECT id,code as 社員番号,name as 社員名, name_kana as "社員名 かな",
       case gender when 1 then "男" when 2 then "女" else "不明" end as "性別",
       created_at as 登録日, updated_at as 更新日 FROM user';
     $data = SelectSQL($sql,$dbh);
@@ -36,12 +34,13 @@ echo $_SERVER['REQUEST_METHOD'];
     </tr>
 <?php foreach ($data as $emp_num => $emp_data) { ?>
   <tr>
-    <?php foreach ($emp_data as $key => $value){?>
-      <td><?php echo $value; ?></td>
-    <?php } ?>
-
-      <td><button type="submit" value="<?php $key ?>" name="id" onclick="location.href='./update_form.php'">編集</button></td>
-      <td><button type="submit" value="<?php echo $data[$emp_num]["社員番号"];?>" formaction="./delete.php" name="id">削除</button>
+    <?php foreach ($emp_data as $key => $value){
+      if ($key != "id") { ?>
+        <td><?php echo $value; ?></td>
+      <?php }
+    }?>
+      <td><button type="submit" value="<?php echo $data[$emp_num]["id"];?>" name="id">編集</button></td>
+      <td><button type="submit" value="<?php echo $data[$emp_num]["id"];?>" formaction="./delete.php" name="id">削除</button>
       </td>
   </tr>
 </form>

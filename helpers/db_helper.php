@@ -15,7 +15,7 @@
    return $dbh;
  }
 
-function ChangeDbSql($sql,$dbh,$bindvalues){
+function ChangeDbSql($sql,$dbh){
   $stmt = $dbh->prepare($sql);
   if($stmt->execute()){
     return TRUE;
