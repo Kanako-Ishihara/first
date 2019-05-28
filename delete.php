@@ -9,7 +9,7 @@
 require_once('./helpers/db_helper.php');
 $id = $_POST['id'];
 $sql = "DELETE FROM user WHERE id = '{$id}'";
-$dbh = get_db_connect();
+$dbh = GetDbConnect();
 if(ChangeDbSql($sql,$dbh) === TRUE){
 	echo "削除に成功しました。";
 }else{

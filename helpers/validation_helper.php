@@ -2,7 +2,7 @@
 require_once('./helpers/extra_helper.php');
 function textValidation($txt,$num){
 	$error_mes = '';
-	if (!check_words($txt,$num)) {
+	if (!CheckWords($txt,$num)) {
 		$error_mes = $num."文字以内で入力してください。必須です。";
 	}
 	return $error_mes;

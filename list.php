@@ -8,7 +8,7 @@
 <?php
     require_once('./helpers/db_helper.php');
 
-    $dbh = get_db_connect();
+    $dbh = GetDbConnect();
     $sql = 'SELECT id,code as 社員番号,name as 社員名, name_kana as "社員名 かな",
       case gender when 1 then "男" when 2 then "女" else "不明" end as "性別",
       created_at as 登録日, updated_at as 更新日 FROM user';

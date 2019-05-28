@@ -1,19 +1,19 @@
 <?php
 
- function get_db_connect(){
-   try{
-     $dsn = 'mysql:dbname=company;host=192.168.199.3;charset=utf8' ;
-     $user = 'root';
-     $password = 'cent_Kagi10';
+function GetDbConnect(){
+  try{
+    $dsn = 'mysql:dbname=company;host=192.168.199.3;charset=utf8' ;
+    $user = 'root';
+    $password = 'cent_Kagi10';
 
-     $dbh = new PDO($dsn, $user, $password);
-   }catch(PDOException $e){
-     echo($e->getMessage());
-     die();
-   }
-   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-   return $dbh;
- }
+    $dbh = new PDO($dsn, $user, $password);
+  }catch(PDOException $e){
+    echo($e->getMessage());
+    die();
+  }
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  return $dbh;
+}
 
 function ChangeDbSql($sql,$dbh){
   $stmt = $dbh->prepare($sql);
@@ -38,11 +38,14 @@ function SelectSQL($sql,$dbh){
   *@param dbh   $dbh　new PDOで生成されたデータ
   */
   $stmt = $dbh->prepare($sql);
-  $stmt->execute();
-  while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $data[] = $row;
+  if($stmt->execute()){
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+      $data[] = $row;
+    }
+    return $data;
+  }else{
+    return "エラー　SQL文は正しいですか？";
   }
-  return $data;
 }
 
 
