@@ -39,14 +39,15 @@ function SelectSQL($sql,$dbh){
   *@param varchar $sql SQL文
   *@param dbh   $dbh　new PDOで生成されたデータ
   */
-  $stmt = $dbh->prepare($sql);
-  if($stmt->execute()){
+  if(!$stmt = $dbh->prepare($sql)){
+    echo "SQL文が不適切です";
+  }if($stmt->execute()){
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       $data[] = $row;
     }
     return $data;
   }else{
-    return "エラー　SQL文は正しいですか？";
+    return "実行に失敗しました";
   }
 }
 

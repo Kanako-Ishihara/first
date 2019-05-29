@@ -17,20 +17,21 @@
 
 <body>
   <button type="button" onclick="location.href='./insert_form.php'">追加</button>
+  <button type="button" onclick="location.href='./search_form.php'">検索</button>
   <br>
 
 <form id="update" action="./update_form.php" method="post">
   <div>社員一覧表</div>
   <table border="1">
     <tr>
-      <td>社員番号</td>
-      <td>社員名</td>
-      <td>社員名(かな)</td>
-      <td>性別</td>
-      <td>登録日</td>
-      <td>更新日</td>
-      <td>編集</td>
-      <td>削除</td>
+      <th>社員番号</th>
+      <th>社員名</th>
+      <th>社員名(かな)</th>
+      <th>性別</th>
+      <th>登録日</th>
+      <th>更新日</th>
+      <th>編集</th>
+      <th>削除</th>
     </tr>
 <?php foreach ($data as $emp_num => $emp_data) { ?>
   <tr>
